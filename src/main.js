@@ -8,7 +8,7 @@ import ElementPlus from 'element-plus';
 import 'element-plus/lib/theme-chalk/index.css';
 
 //加载全局样式文件
-import './styles/index.less'
+//import './styles/index.less'
 
 createApp(App)
     .use(router)

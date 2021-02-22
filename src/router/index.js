@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 //在VueCLI中 @ 表示 src 的别名
-import Login from '@/views/login'
+import Login from '@/views/login/'
+import Home from '@/views/home/'
 
 //路由配置表
 const routes = [
@@ -9,6 +10,11 @@ const routes = [
     path: '/login',
     name: 'login',
     component: Login
+  },
+  {
+    path: '/',
+    name: 'home',
+    component: Home
   }
 ]
 
