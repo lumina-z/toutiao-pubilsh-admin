@@ -4,6 +4,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Login from '@/views/login/'
 import Home from '@/views/home/'
 import Layout from '@/views/layout/'
+import Article from '@/views/article/'
 
 //路由配置表
 const routes = [
@@ -27,6 +28,11 @@ const routes = [
         name: 'home',
         component: Home
       },
+      {
+        path: '/article',
+        name: 'article',
+        component: Article
+      }
     ]
   }
 ]
