@@ -110,6 +110,7 @@
               circle
               type="danger"
               icon="el-icon-delete"
+              @click="onDeleteArticle(scope.row.id)"
             ></el-button>
           </template>
         </el-table-column>
@@ -122,6 +123,7 @@
         @current-change="onCurrentChange"
         :page-size="pageSize"
         :disabled="loading"
+        :current-page.sync="page"
       >
       </el-pagination>
     </el-card>
@@ -129,7 +131,7 @@
 </template>
 
 <script>
-import { getArticles, getArticleChannels } from "@/api/article";
+import { getArticles, getArticleChannels, delArticle } from "@/api/article";
 import moment from "moment";
 
 export default {
@@ -180,6 +182,7 @@ export default {
       channelId: null, //查询文章的频道
       rangeDate: [], //筛选日期范围
       loading: true,
+      page: 1         //当前页码
     };
   },
 
@@ -226,6 +229,31 @@ export default {
       getArticleChannels().then((res) => {
         this.channels = res.data.data.channels;
       });
+    },
+    onDeleteArticle(articleId) {
+      //console.log(articleId);
+      this.$confirm("此操作将删除文章, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+      })
+        .then(() => {
+          //
+          delArticle(articleId.toString()).then((res) => {
+            //删除成功后刷新页面
+            this.loadArticles(thsi.page)
+          });
+          this.$message({
+            type: "success",
+            message: "删除成功!",
+          });
+        })
+        .catch(() => {
+          this.$message({
+            type: "info",
+            message: "已取消",
+          });
+        });
     },
   },
 };

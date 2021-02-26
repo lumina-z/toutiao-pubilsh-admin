@@ -26,3 +26,13 @@ export const getArticleChannels = () =>{
         url: '/mp/v1_0/channels',
     })
 }
+
+/**
+ * 删除文章
+ */
+export const delArticle = (articleId) =>{
+    return request({
+        method: 'DELETE',
+        url: `/mp/v1_0/articles/${articleId}`,
+    })
+}
