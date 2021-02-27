@@ -44,7 +44,7 @@ export default {
   data() {
     return {
       form: {
-        name: "",
+        name: "nnn",
         region: "",
         date1: "",
         date2: "",
